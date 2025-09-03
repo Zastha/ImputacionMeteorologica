@@ -17,4 +17,4 @@ El proyecto estará dividido en 4 fases:
 
 3-.Imputar los datos faltantes por medio de forecasting y backcasting utilizando registros previos y posteriores
 
-4-.Predecir 
+4-.Predecir los registros futuros, con el objetivo de llegar a anticipar 10 años a futuro.
