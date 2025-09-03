@@ -10,7 +10,11 @@ Cada registro cuenta con los siguientes datos:
 Fecha de Registro | Precipitación | Evaporación | Temperatura Máxima | Temperatura Mínima | Fecha Auxiliar
 
 El proyecto estará dividido en 4 fases:
+
 1-. Normalizar Los Datos en un CSV
+
 2-.Detectar de Fechas con huevos de datos
+
 3-.Imputar los datos faltantes por medio de forecasting y backcasting utilizando registros previos y posteriores
+
 4-.Predecir 
