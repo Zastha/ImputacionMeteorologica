@@ -1,4 +1,4 @@
-# ImputacionMeteorologica
+# Imputacion Meteorologica
 Autor: René Zaid Zazueta Rivas
 Asesor: Zuriel Dathan Mora Felix
 
