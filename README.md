@@ -13,8 +13,17 @@ El proyecto estará dividido en 4 fases:
 
 1-. Normalizar Los Datos en un CSV
 
-2-.Detectar   gaps de Fechas faltantes
+2-.Detectar Hoyos de datos multivariados y registros faltantes
 
-3-.Imputar los datos faltantes por medio de forecasting y backcasting utilizando registros previos y posteriores
+3-.Imputar datos multivariados faltantes
+    a-.Utilizar Interpolación Lineal para hoyos pequeños (1-3 días)
+    b-.Utilizar Modelos de Machine Learning para hoyos grandes (4+ días)
 
-4-.Predecir los registros futuros, con el objetivo de llegar a anticipar 10 años a futuro.
+4-.Imputar registros/días faltantes 
+    a-.Utilizar Interpolación Lineal para hoyos pequeños (1-3 días)
+    b-.Utilizar Modelos de Machine Learning para hoyos grandes (4+ días)
+
+5-.Probar y comparar la precisión de cada modelo
+
+## Metodología de Imputación de Datos
+<img width="3780" height="2162" alt="Tablero en blanco (1)" src="https://github.com/user-attachments/assets/1d3ab2a5-69fa-44b9-9f57-a5a845064e54" />
