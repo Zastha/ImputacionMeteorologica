@@ -1,0 +1,54 @@
+gui.py
+Elementos de GUI:
+
+datascraper.py:
+Etapa 0: Scraping de datos:
+0.- Elegir si la descarga va a ser en un lote dado por el usuario o exploratoria (Busca todos los archivos existentes dentro de un rango numérico definido por el usuario)
+1.- Descarga archivos txt.
+
+limpiar_datos.py:
+Etapa 1: limpiar txt a csv
+1.- Abre un archivo de un directorio de la computadora
+2.- Obtiene datos relevantes de las cabeceras (estación, nombre, estado, municipio, condición de la estacion, latitud, longitud, altitud)
+3.- Quita cabecera inválida, caracteres inválidos, tabulaciones
+4.- Transforma el archivo de formato de un archivo txt a un archivo csv
+4.- Añade columnas para los datos relevantes extraidos
+5.- Verifica que el formato de fecha sea el correcto [D-M-Y | Y-D-M] en todos los registros existentes
+6.- Rellena los campos sin valor cuya media exista con el valor de la media para las columnas PRECIP, EVAP, TMAX y TMIN
+7.- Cambia todas los registros numéricos que no tengan valor asignado a 'null'
+8.- Se guarda el archivo en formato CSV en el sistema
+
+Etapa 2: rellenar fechas faltantes
+1.- Se carga el archivo CSV
+2.- Se cuenta el número de registros existentes
+3.- Se obtiene la primera fecha registrada y la última fecha del archivo
+4.- Se crea un dataset nuevo solo con la columna FECHA y se colocan todas las fechas dentro del rango dado por las fechas del paso anterior
+5.- Se calcula el porcentaje de entradas faltantes.
+5.1.- Si el porcentaje de faltantes es mayor al umbral permitido dado por el usuario, el archivo CSV se descarta y se elimina del sistema
+6.- Se fusionan las columnas de fecha para obtener todos los registros faltantes
+7.- Se rellenan los campos sin valores del dataset fusionado con 'null'
+8.- Se guarda el archivo CSV dentro del sistema
+
+Etapa 3: Generar concentrados diarios
+1.- Se carga la carpeta que contiene todos los archivos procesados
+2.- Se crea un dataset nuevo, y se van concatenando todos los datos de los archivos de la carpeta
+3.- Se guarda el archivo concatenado en una carpeta nueva
+
+Etapa 4: Generar concentrados mensuales
+1.- Se carga la carpeta que contiene todos los archivos procesados
+2.- Por cada archivo dentro de la carpeta:
+2.1.- Se crea un nuevo archivo CSV
+2.2.- Se agrupa por Año y Mes tal que:
+2.2.1. PRECIP sea la suma de las precipitaciones
+2.2.2. EVAP sea la media de evaporaciones
+2.2.3. TMAX sea la temperatura más alta dentro de ese año y ese mes
+2.2.4. TMIN sea la temperatura más baja registrada ese año y mes
+3.- Se le colocan los valores que son constantes (estación, nombre, estado, municipio, estado de la estacion, latitud, longitud, altitud) al nuevo CSV
+4.- Se colocan los valores 'null' al nuevo archivo
+5.- Se guarda el archivo con el formato 'CM_{estacion}.csv'
+6.- Se repite el proceso hasta que se generen los concentrados mensuales de todas las estaciones dentro de la carpeta
+
+Etapa 5: Generar concentrados históricos
+1.- Se carga la carpeta que contiene todos los archivos de concentrados mensuales
+2.- Se crea un dataset nuevo, y se van concatenando todos los datos de los archivos de la carpeta
+3.- Se guarda el archivo concatenado en una carpeta nueva
